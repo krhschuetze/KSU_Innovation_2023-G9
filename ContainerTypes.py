@@ -53,6 +53,14 @@ class StorageUnit(ContainerSpace):
     height = 96
     maxWeight = 999999999
 
+# Pallets
+class Pallet(ContainerSpace):
+    type = "Pallet"
+    length = 48
+    width = 60
+    height = 40
+    maxWeight = 4600
+
 # Available/Remaining space
 class RemainingSpace(ContainerSpace):
     # Set all self variables to value of container type (Passed in)
@@ -65,9 +73,10 @@ class RemainingSpace(ContainerSpace):
     # Print dimensions
     def printDimensions(self): 
         print(self.type,
-            "\nLength:", self.length,
+            "\nLength:", self.length, "\""
             "\nWidth:", self.width,
-            "\nHeight:", self.height)
+            "\nHeight:", self.height,
+            "\nWeight limit has not been reached.", self.maxWeight, "remaining.")
     # Space filling method
     def howManyFit(self, item):
         counterLength = 0
@@ -100,19 +109,32 @@ class RemainingSpace(ContainerSpace):
             counterHeight += 1
         return max(counterLength, counterWidth, counterHeight, counterWeight)
 
-#EXAMPLE OBJECT
-class itemExample:
-    def __init__(self):
-        self.type = "Car Battery"
-        self.length = 2
-        self.width = 5.5
-        self.height = 8 + (15/16)
-        self.weight = 7
+#Generic object to ship
+class itemToShip:
+    # Define all hazard labels an item can have
+    hazardSet = {"acidic", "caustic", "combustible communicable", 
+             "compressed gas", "corrosive", "explosive", 
+             "explosive", "flammable", "infectious", 
+             "inflammable", "poison", "radioactive",
+             "refrigerated", "toxic", "volatile"}
+    # Assign individual object variables- Potentially set this to many presaved
+    def __init__(self, type, length, width, height, weight, hazards):
+        self.type = type
+        self.length = length
+        self.width = width
+        self.height = height
+        self.weight = weight
+        self.hazards = hazards # Input hazards as a set- This disallows duplicates
     def printDimensions(self): 
         print(self.type,
             "\nLength:", self.length,
             "\nWidth:", self.width,
-            "\nHeight:", self.height)
+            "\nHeight:", self.height,
+            "\nWeight:", self.weight,
+            #"\nHazards:", self.hazards
+            )
+        for hazard in self.hazardSet:
+            if (hazard in self.hazards): print("Item is " + hazard.title())
 
 
 
@@ -131,11 +153,11 @@ print(shipCon40.printDimensions())
 print("-----------------------------------------")
 
 #Maximum amount of inputs testing
-print("RemainingSpaceInUnit\n")
+"Before subtraction"
 storUnit = RemainingSpace(ShippingContainer10)
 print(storUnit.printDimensions())
 print("\nObject Dimensions\n")
-battery = itemExample()
+battery = itemToShip("Car Battery", 9.56, 6.875, 8.875, 34, {"flammable", "radioactive"})
 battery.printDimensions()
 print("\nHow many DID fit?\n")
 print(storUnit.howManyFit(battery))
