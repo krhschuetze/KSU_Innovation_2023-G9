@@ -1,0 +1,9 @@
+from ContainerTypes import ContainerSpace
+
+# Shipping Containers (10, 20, 40)
+class ShippingContainer(ContainerSpace):
+    type = "NULL"
+    # Each child of ShippingContainer has a different length
+    width = 96
+    height = 102
+    maxWeight = 59200

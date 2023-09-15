@@ -110,7 +110,7 @@ class RemainingSpace(ContainerSpace):
         return max(counterLength, counterWidth, counterHeight, counterWeight)
 
 #Generic object to ship
-class itemToShip:
+class ItemToShip:
     # Define all hazard labels an item can have
     hazardSet = {"acidic", "caustic", "combustible communicable", 
              "compressed gas", "corrosive", "explosive", 
@@ -137,9 +137,6 @@ class itemToShip:
             if (hazard in self.hazards): print("Item is " + hazard.title())
 
 
-
-
-
 #Print dimensions testing 
 boxTru = RemainingSpace(BoxTruck)
 print(boxTru.printDimensions())
@@ -157,7 +154,7 @@ print("-----------------------------------------")
 storUnit = RemainingSpace(ShippingContainer10)
 print(storUnit.printDimensions())
 print("\nObject Dimensions\n")
-battery = itemToShip("Car Battery", 9.56, 6.875, 8.875, 34, {"flammable", "radioactive"})
+battery = ItemToShip("Car Battery", 9.56, 6.875, 8.875, 34, {"flammable", "radioactive"})
 battery.printDimensions()
 print("\nHow many DID fit?\n")
 print(storUnit.howManyFit(battery))

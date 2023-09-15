@@ -1,0 +1,8 @@
+from ContainerTypes import ShippingContainer
+
+class ShippingContainer40(ShippingContainer):
+    type = "40 foot Shipping Container"
+    length = 480
+    # Inherit width from ShippingContainer
+    # Inherit height from ShippingContainer
+    # Inherit maxWeight from ShippingContainer

@@ -1,0 +1,49 @@
+from ContainerTypes import ContainerSpace
+
+# Available/Remaining space
+class RemainingSpace(ContainerSpace):
+    # Set all self variables to value of container type (Passed in)
+    def __init__(self, containerType):
+        self.type = "Remaining space in a " + containerType.type
+        self.length = containerType.length
+        self.width = containerType.width
+        self.height = containerType.height
+        self.maxWeight = containerType.maxWeight
+    # Print dimensions
+    def printDimensions(self): 
+        print(self.type,
+            "\nLength:", self.length, "\""
+            "\nWidth:", self.width,
+            "\nHeight:", self.height,
+            "\nWeight limit has not been reached.", self.maxWeight, "remaining.")
+    # Space filling method
+    def howManyFit(self, item):
+        counterLength = 0
+        while (item.length <= self.length and item.width <= self.width and item.height <= self.height and item.weight <=self.maxWeight):
+            self.length -= item.length
+            self.width -= item.width
+            self.height -= item.height
+            self.maxWeight -= item.weight
+            counterLength += 1
+        counterWidth = 0
+        while (item.length <= self.length and item.width <= self.width and item.height <= self.height and item.weight <=self.maxWeight):
+            self.length -= item.length
+            self.width -= item.width
+            self.height -= item.height
+            self.maxWeight -= item.weight
+            counterWidth += 1
+        counterHeight = 0
+        while (item.length <= self.length and item.width <= self.width and item.height <= self.height and item.weight <=self.maxWeight):
+            self.length -= item.length
+            self.width -= item.width
+            self.height -= item.height
+            self.maxWeight -= item.weight
+            counterHeight += 1
+        counterWeight = 0
+        while (item.length <= self.length and item.width <= self.width and item.height <= self.height and item.weight <=self.maxWeight):
+            self.length -= item.length
+            self.width -= item.width
+            self.height -= item.height
+            self.maxWeight -= item.weight
+            counterHeight += 1
+        return max(counterLength, counterWidth, counterHeight, counterWeight)
