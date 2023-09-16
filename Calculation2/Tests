@@ -1,0 +1,27 @@
+from ContainerTypes import ShippingContainer10, ShippingContainer20, ShippingContainer40, BoxTruck, RemainingSpace
+from ShippableItems import ItemToShip
+
+
+#Print dimensions testing 
+boxTru = RemainingSpace(BoxTruck)
+print(boxTru.printDimensions())
+shipCon10 = RemainingSpace(ShippingContainer10)
+print(shipCon10.printDimensions())
+shipCon20 = RemainingSpace(ShippingContainer20)
+print(shipCon20.printDimensions())
+shipCon40 = RemainingSpace(ShippingContainer40)
+print(shipCon40.printDimensions())
+
+print("-----------------------------------------")
+
+#Maximum amount of inputs testing
+"Before subtraction"
+storUnit = RemainingSpace(ShippingContainer10)
+print(storUnit.printDimensions())
+print("\nObject Dimensions\n")
+battery = ItemToShip("Car Battery", 9.56, 6.875, 8.875, 34, {"flammable", "radioactive"})
+battery.printDimensions()
+print("\nHow many DID fit?\n")
+print(storUnit.howManyFit(battery))
+print("\nRemaining after subraction\n")
+print(storUnit.printDimensions())

@@ -137,6 +137,7 @@ class ItemToShip:
             if (hazard in self.hazards): print("Item is " + hazard.title())
 
 
+
 #Print dimensions testing 
 boxTru = RemainingSpace(BoxTruck)
 print(boxTru.printDimensions())

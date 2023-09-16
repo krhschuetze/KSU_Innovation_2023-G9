@@ -1,4 +1,65 @@
-from ContainerTypes import ContainerSpace
+# All types of container inherit from ContainerSpace
+class ContainerSpace():
+    # Interior dimensions in inches
+    def __init__(self):
+        self.type = "NULL"
+        self.length = 999999999
+        self.width = 999999999
+        self.height = 999999999
+        self.maxWeight = 999999999
+
+# Shipping Containers (10, 20, 40)
+class ShippingContainer(ContainerSpace):
+    type = "NULL"
+    # Each child of ShippingContainer has a different length
+    width = 96
+    height = 102
+    maxWeight = 59200
+
+class ShippingContainer10(ShippingContainer):
+    type = "10 foot Shipping Container"
+    length = 120
+    # Inherit width from ShippingContainer
+    # Inherit height from ShippingContainer
+    # Inherit maxWeight from ShippingContainer
+
+class ShippingContainer20(ShippingContainer):
+    type = "20 foot Shipping Container"
+    length = 240
+    # Inherit width from ShippingContainer
+    # Inherit height from ShippingContainer
+    # Inherit maxWeight from ShippingContainer
+
+class ShippingContainer40(ShippingContainer):
+    type = "40 foot Shipping Container"
+    length = 480
+    # Inherit width from ShippingContainer
+    # Inherit height from ShippingContainer
+    # Inherit maxWeight from ShippingContainer
+
+# Box Truck
+class BoxTruck(ContainerSpace):
+    type = "Box Truck"
+    length = 288
+    width = 96
+    height = 96
+    maxWeight = 999999999
+
+# Storage Unit
+class StorageUnit(ContainerSpace):
+    type = "Storage Unit"
+    length = 576
+    width = 480
+    height = 96
+    maxWeight = 999999999
+
+# Pallets
+class Pallet(ContainerSpace):
+    type = "Pallet"
+    length = 48
+    width = 60
+    height = 40
+    maxWeight = 4600
 
 # Available/Remaining space
 class RemainingSpace(ContainerSpace):

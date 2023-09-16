@@ -1,9 +1,0 @@
-# All types of container inherit from ContainerSpace
-class ContainerSpace():
-    # Interior dimensions in inches
-    def __init__(self):
-        self.type = "NULL"
-        self.length = 999999999
-        self.width = 999999999
-        self.height = 999999999
-        self.maxWeight = 999999999

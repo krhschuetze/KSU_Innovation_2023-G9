@@ -1,9 +1,0 @@
-from ContainerTypes import ContainerSpace
-
-# Box Truck
-class BoxTruck(ContainerSpace):
-    type = "Box Truck"
-    length = 288
-    width = 96
-    height = 96
-    maxWeight = 999999999

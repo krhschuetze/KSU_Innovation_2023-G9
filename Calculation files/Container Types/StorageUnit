@@ -1,9 +1,0 @@
-from ContainerTypes import ContainerSpace
-
-# Storage Unit
-class StorageUnit(ContainerSpace):
-    type = "Storage Unit"
-    length = 576
-    width = 480
-    height = 96
-    maxWeight = 999999999

@@ -1,9 +1,0 @@
-from ContainerTypes import ContainerSpace
-
-# Pallets
-class Pallet(ContainerSpace):
-    type = "Pallet"
-    length = 48
-    width = 60
-    height = 40
-    maxWeight = 4600
