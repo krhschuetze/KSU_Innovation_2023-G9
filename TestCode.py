@@ -73,10 +73,10 @@ class RemainingSpace(ContainerSpace):
     # Print dimensions
     def printDimensions(self): 
         print(self.type,
-            "\nLength:", self.length, "\""
-            "\nWidth:", self.width,
-            "\nHeight:", self.height,
-            "\nWeight limit has not been reached.", self.maxWeight, "remaining.")
+            "\nLength:", self.length, "inches",
+            "\nWidth:", self.width, "inches",
+            "\nHeight:", self.height, "inches",
+            "\nWeight limit has not been reached.", self.maxWeight, "pounds remaining for use.")
     # Space filling method
     def howManyFit(self, item):
         counterLength = 0
@@ -127,10 +127,10 @@ class ItemToShip:
         self.hazards = hazards # Input hazards as a set- This disallows duplicates
     def printDimensions(self): 
         print(self.type,
-            "\nLength:", self.length,
-            "\nWidth:", self.width,
-            "\nHeight:", self.height,
-            "\nWeight:", self.weight,
+            "\nLength:", self.length, "inches",
+            "\nWidth:", self.width, "inches",
+            "\nHeight:", self.height, "inches",
+            "\nWeight:", self.weight, "pounds",
             #"\nHazards:", self.hazards
             )
         for hazard in self.hazardSet:
@@ -151,13 +151,14 @@ print(shipCon40.printDimensions())
 print("-----------------------------------------")
 
 #Maximum amount of inputs testing
-"Before subtraction"
-storUnit = RemainingSpace(ShippingContainer10)
-print(storUnit.printDimensions())
+print("Original space in Shipping Container with a length of 10 ft")
+ship10 = RemainingSpace(ShippingContainer10)
+print(ship10.printDimensions())
 print("\nObject Dimensions\n")
 battery = ItemToShip("Car Battery", 9.56, 6.875, 8.875, 34, {"flammable", "radioactive"})
 battery.printDimensions()
-print("\nHow many DID fit?\n")
-print(storUnit.howManyFit(battery))
-print("\nRemaining after subraction\n")
-print(storUnit.printDimensions())
+print("\nHow many of " + battery.type + " fit in " + ship10.type + "?\n")
+batteriesFit = ship10.howManyFit(battery)
+print(batteriesFit)
+print("\nSpace remaining after", batteriesFit, battery.type, "have been placed intside", ship10.type, "\n")
+print(ship10.printDimensions())
